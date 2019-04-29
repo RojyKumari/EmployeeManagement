@@ -11,7 +11,7 @@ export class DataService{
 constructor(private http: HttpClient){
 }
 
-put(body: any) {
+put(body: Employee[]) {
 
  this.http.put('https://employee-management-83240.firebaseio.com/employees.json', body).subscribe(
    (res) => console.log(res)

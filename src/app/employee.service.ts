@@ -39,7 +39,7 @@ export class EmployeeService {
   }
 
   updateEmployee(employees: Employee[]) {
-    this.employees = employees;
+    this.employees = this.employees.concat(employees);
     this.informOthers();
     this.dataService.put(this.employees);
   }
