@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { filter, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -24,24 +25,25 @@ export class EmployeeListComponent implements OnInit {
     return this.searchForm.controls.query.value as string;
   }
 
-  constructor(private employeeService: EmployeeService, private fb: FormBuilder) { }
+  constructor(private employeeService: EmployeeService, private fb: FormBuilder, private route: ActivatedRoute) {
+    console.log('employee-list component instantiated');
+  }
 
   ngOnInit() {
-    this.btnText = "Show";
+
     this.showEmployeeClicked = false;
     this.searchForm = this.fb.group({
       query : ['', Validators.required]
     });
 
-    this.employees = this.employeeService.getEmployees();
+    this.route.data.subscribe((e)=>{
+      this.employees = e['employees'] as Employee[]
+    });
 
     this.employeeService.employee.subscribe((employees: Employee[]) =>  this.employees = employees);
   }
 
-  showEmployee(){
-    this.showEmployeeClicked = !this.showEmployeeClicked;
-    this.btnText = this.btnText === "Hide"? "Show" : "Hide";
-  }
+
 
 
 }

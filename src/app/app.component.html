@@ -16,7 +16,13 @@
       <app-employee-detail></app-employee-detail>
     </div>
     <div class="col-6">
-      <app-employee-list></app-employee-list>
+        <div class="row">
+            <div class="col">
+              <input type="button" class="btn btn-primary" [value]="btnText" (click)="showEmployee()" title="Show employee list" />
+            </div>
+          </div>
+      <router-outlet></router-outlet>
+      <!-- <app-employee-list></app-employee-list> -->
     </div>
   </div>
 

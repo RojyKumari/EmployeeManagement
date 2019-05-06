@@ -26,10 +26,11 @@ export class EmployeeService {
     if (this.employees.length) {
       return this.employees;
     } else {
-      this.dataService.get().subscribe(e => {
-        this.employees = e;
-        this.informOthers();
-      });
+    return this.dataService.get();
+    //.subscribe(e => {
+    //     this.employees = e;
+    //     this.informOthers();
+    //   });
     }
   }
 

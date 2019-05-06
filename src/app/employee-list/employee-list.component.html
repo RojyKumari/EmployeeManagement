@@ -1,9 +1,5 @@
-<div class="row">
-  <div class="col">
-    <input type="button" class="btn btn-primary" [value]="btnText" (click)="showEmployee()" title="Show employee list" />
-  </div>
-</div>
-<div class="row mt-5"  *ngIf="showEmployeeClicked">
+
+<div class="row mt-5">
   <div class="col">
     <form [formGroup]="searchForm" class="form-group">
       <input type="search" class="form-control" formControlName="query" placeholder="Search...">
